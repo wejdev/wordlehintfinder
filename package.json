@@ -1,0 +1,29 @@
+{
+  "name": "wordlehintfinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wordlehintfinder.ts",
+  "scripts": {
+    "build": "esbuild ./src/wordlehintfinder.ts --outdir=./bin --platform=node",
+    "build2": "tsc -p --declaration tsconfig.json",
+    "build3": "tsc --declarationMap --pretty",
+    "buildandhint": "tsc --build --clean -p tsconfig.json && node ./bin/wordlehintfinder.js",
+    "hint": "node --trace-warnings ./bin/wordlehintfinder.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.12",
+    "esbuild": "^0.14.2",
+    "esbuild-node-externals": "^1.4.1",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.4.0",
+        "typescript": "^4.5.5"
+  }
+}

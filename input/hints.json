@@ -1,0 +1,8 @@
+[
+    [{"ch":"R", "state": "D"},{"ch":"A", "state": "D"},{"ch":"I", "state": "D"},{"ch":"S", "state": "D"},{"ch":"E", "state": "D"}],
+    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
+    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
+    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
+    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
+    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}]
+]
