@@ -67,8 +67,9 @@ export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
     // let absentLetterRegex = knownAbsents.map(absentLetter => new RegExp(absentLetter));
 
     let regexs: Array<RegExp> = [];
-    regexs.push(/^([^IATE]|[R])R([^IRATE]|[R])([^IRATE]|[R])([^IRATE]|[R])$/);
+    regexs.push(/[^ITE][^ITER]A[^ITE][^ITE]/);
     regexs.push(/R/);
+    regexs.push(/A/);
     console.log(regexs);
 
     return regexs;
