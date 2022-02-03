@@ -5,11 +5,11 @@
   "main": "wordlehintfinder.ts",
   "scripts": {
     "build": "esbuild ./src/wordlehintfinder.ts --outdir=./bin --platform=node",
-    "build2": "tsc -p --declaration tsconfig.json",
-    "build3": "tsc --declarationMap --pretty",
-    "buildandhint": "tsc --build --clean -p tsconfig.json && node ./bin/wordlehintfinder.js",
+    "build2": "tsc",
+    "buildandhint": "tsc --build --clean && node ./bin/wordlehintfinder.js",
     "hint": "node --trace-warnings ./bin/wordlehintfinder.js",
     "test": "jest",
+    "testx": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:watch": "jest --watch"
   },
   "keywords": [],

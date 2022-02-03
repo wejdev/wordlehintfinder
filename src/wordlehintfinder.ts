@@ -10,7 +10,7 @@ const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
 const __inputDirname = __rootdirname + "input/";
 // const __inputDirname = "./input/";
 
-enum LetterState {
+const enum LetterState {
     Empty,    // (Black) No letter
     Absent,   // (Dark Gray) Letter guessed, but not in answer
     Present,  // (Yellow) Letter guessed. In answer, but not this column
