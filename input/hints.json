@@ -1,5 +1,5 @@
 [
-    [{"ch":"R", "state": "D"},{"ch":"A", "state": "D"},{"ch":"I", "state": "D"},{"ch":"S", "state": "D"},{"ch":"E", "state": "D"}],
+    [{"ch":"R", "state": "correct"},{"ch":"A", "state": "present"},{"ch":"I", "state": "absent"},{"ch":"S", "state": "absent"},{"ch":"E", "state": "absent"}],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],

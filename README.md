@@ -1,2 +1,14 @@
-# wordlehintfinder
-Find matching words, given Wordle UI
+## Project setup
+```
+npm install
+```
+
+## Compile to typescript
+```
+npm run build
+```
+
+### Run tests
+```
+npm test
+```
