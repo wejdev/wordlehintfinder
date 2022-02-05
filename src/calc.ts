@@ -1,7 +1,5 @@
-export function add(x: number, y: number): number {
-  return x + y;
-}
+const add = (x: number, y: number): number => x + y
 
-export function mul(x: number, y: number): number {
-  return x * y;
-}
+const mul = (x: number, y: number): number => x * y
+
+export { add, mul }

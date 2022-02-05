@@ -67,7 +67,7 @@ export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
     //         }
     //     });
     // });
-//
+    //
     // console.log('----------');
 
     // let absentLetterRegex = new RegExp('^' + knownAbsents.join(''));
