@@ -2,23 +2,24 @@
 
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from 'url';
 
 const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
-const __inputDirname = __rootdirname + "input/";
-// const fiveLetterWords = fs
-//     .readFileSync(path.join(__inputDirname, "words5u.txt"), "utf8")
-//     .toString()
-//     .split("\n");
+const __inputdirname = __rootdirname + "input/";
+
+export const acceptedWords = fs
+    .readFileSync(path.join(__inputdirname, "wordlewords.json"), "utf8")
+    .toString()
+    .split("\n");
+// TODO: wordlewords has acceptedWords, answerWords, and letterStates, so no need to read answer words separately
 
 export const answerWords = fs
-    .readFileSync(path.join(__inputDirname, "wordleanswers.txt"), "utf8")
+    .readFileSync(path.join(__inputdirname, "wordleanswers.txt"), "utf8")
     .toString()
     .split("\n")
     .map(word => word.trim().toUpperCase());
 
 export const knownHints = JSON.parse(
-    fs.readFileSync(path.join(__inputDirname, "hints.json"), "utf8"));
+    fs.readFileSync(path.join(__inputdirname, "hints.json"), "utf8"));
 
 export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
     // let knownAbsents: Array<string> = [];
@@ -73,8 +74,8 @@ export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
     regexs.push(/^R[^AISE][^ISE][^ISE][^ISE]$/);
     regexs.push(/R/);
     regexs.push(/A/);
-    console.log(regexs);
-    console.log('----------');
+    // console.log(regexs);
+    // console.log('----------');
 
     return regexs;
 }
@@ -83,4 +84,5 @@ export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
 export const findHints = (inputs: string[], wordleRegexs: RegExp[]) =>
     inputs.filter(line => wordleRegexs.every(regEx => regEx.test(line)));
 
-findHints(answerWords, computeRegexsForHints(knownHints)).forEach(item => console.log(item));
+findHints(answerWords, computeRegexsForHints(knownHints))
+    .forEach(item => console.log(item));
