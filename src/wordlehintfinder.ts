@@ -4,19 +4,8 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from 'url';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-// const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
-// const __inputDirname = __rootdirname + "input/";
-const __inputDirname = "./input/";
-
-const enum LetterState {
-    Empty,    // (Black) No letter
-    Absent,   // (Dark Gray) Letter guessed, but not in answer
-    Present,  // (Yellow) Letter guessed. In answer, but not this column
-    Correct   // (Green) Letter guessed. In answer and correct column
-}
-
+const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
+const __inputDirname = __rootdirname + "input/";
 // const fiveLetterWords = fs
 //     .readFileSync(path.join(__inputDirname, "words5u.txt"), "utf8")
 //     .toString()
