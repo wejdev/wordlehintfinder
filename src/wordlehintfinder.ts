@@ -8,7 +8,7 @@ const __inputdirname = __rootdirname + "input/";
 
 export const wordleWords = JSON.parse(fs.readFileSync(
     path.join(__inputdirname, "wordlewords.json"), "utf8"));
-const answerWords = wordleWords.answerWords.map((w: string)  => w.toUpperCase());
+const answerWords = wordleWords.answerWords.map((w: string) => w.toUpperCase());
 
 export const knownHints = JSON.parse(
     fs.readFileSync(path.join(__inputdirname, "hints.json"), "utf8"));
@@ -66,8 +66,6 @@ export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
     regexs.push(/^R[^AISE][^ISE][^ISE][^ISE]$/);
     regexs.push(/R/);
     regexs.push(/A/);
-    // console.log(regexs);
-    // console.log('----------');
 
     return regexs;
 }
@@ -76,5 +74,5 @@ export const findHints = (inputs: string[], wordleRegexs: RegExp[]) =>
     inputs.filter(line => wordleRegexs.every(regEx => regEx.test(line)));
 
 const knownRegexs = computeRegexsForHints(knownHints);
-const hints = findHints(answerWords,knownRegexs);
+const hints = findHints(answerWords, knownRegexs);
 hints.forEach(item => console.log(item));
