@@ -10,7 +10,7 @@ test('Wordle map returns correct regular expressions', () => {
 test('computeRegexsForHints works with various inputs', () => {
 
     const regexs = computeRegexsForHints([]);
-    expect(regexs).toStrictEqual([/^R[^AISE][^ISE][^ISE][^ISE]$/, /R/, /A/]);
+    expect(regexs).toStrictEqual([/^S[^RATEWINDYPO][^RATEWNDYPO][^RATEWNDYPOI]L$/, /I/, /S/, /L/]);
 });
 
 test('knowHints is importable', () => {
