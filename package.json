@@ -9,7 +9,7 @@
     "hint": "node ./bin/wordlehintfinder.js",
     "hintx": "node --trace-warnings --experimental-modules ./bin/wordlehintfinder.js",
     "buildhint": "tsc && node ./bin/wordlehintfinder.js",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "",
