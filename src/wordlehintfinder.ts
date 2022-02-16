@@ -6,7 +6,7 @@ import fs from "fs";
 const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
 const __inputdirname = __rootdirname + "input/";
 
-export const wordleWords = JSON.parse(fs.readFileSync(
+const wordleWords = JSON.parse(fs.readFileSync(
     path.join(__inputdirname, "wordlewords.json"), "utf8"));
 const answerWords = wordleWords
     .answerWords
@@ -15,70 +15,99 @@ const answerWords = wordleWords
         return (n1 > n2) ? 1 : (n1 < n2) ? -1 : 0;
     });
 
-export const knownHints = JSON.parse(
+const knownHints = JSON.parse(
     fs.readFileSync(path.join(__inputdirname, "hints.json"), "utf8"));
 
-export const computeRegexsForHints = (knowHints: any[]): RegExp[] => {
-    // let knownAbsents: Array<string>n = [];
-    // let knownPresents: Array<string> = [];
-    // let columnStates: Array<{ index: number, correct: string, absent: string[] }> = new Array[5];
+const replaceColumnState = (
+    array: { correct: string, absent: string }[],
+    index: number,
+    items: { correct: string, absent: string }) =>
+    [...array.slice(0, index), items, ...array.slice(index + 1)];
 
-    // knowHints.forEach((hintRow: any[]) => {
-    //     hintRow.forEach((hint, index) => {
-    //         let currentLetter = hint.ch.toUpperCase();
-    //         let currentState = hint.state.toUpperCase();
+const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp[] => {
+    let knownPresents: Set<string> = new Set();
+    let columnStates: Array<{ correct: string, absent: string }> =
+        new Array<{ correct: string, absent: string }>(5)
+            .fill({ correct: "", absent: "" });
 
-    //         switch (currentState) {
-    //             case "ABSENT":
-    //             case "DARKGRAY":
-    //                 knownAbsents.push(currentLetter);
-    //                 break;
+    hints.forEach((hintRow: { ch: string; state: string }[]) => {
+        hintRow.forEach((hint, index) => {
+            let currentLetter: string = hint.ch.toUpperCase();
+            let currentState: string = hint.state.toUpperCase();
 
-    //             case "PRESENT":
-    //             case "YELLOW":
-    //                 columnStates[index].push(currentLetter);
-    //                 knownPresents.push(currentLetter);
-    //                 columnStates[index].absent.push(currentLetter);
-    //                 break;
+            switch (currentState) {
+                case "ABSENT":
+                case "DARKGRAY":
+                case "D":
+                case "GRAY":
+                case "A":
+                case "CHARCOAL":
+                case "C":
+                    columnStates = columnStates.map(cs => {
+                        return {
+                            correct: cs.correct,
+                            absent: cs.absent.concat(currentLetter)
+                        };
+                    });
+                    break;
 
-    //             case "CORRECT":
-    //             case "GREEN":
-    //                 knownPresents.push(currentLetter);
-    //                 columnStates[index].correct =currentLetter;
-    //                 break;
+                case "PRESENT":
+                case "YELLOW":
+                case "Y":
+                    columnStates = replaceColumnState(
+                        columnStates,
+                        index,
+                        {
+                            correct: columnStates[index].correct,
+                            absent: columnStates[index].absent.concat(currentLetter)
+                        }
+                    );
+                    knownPresents.add(currentLetter);
+                    break;
 
-    //             default:
-    //             case "EMPTY":
-    //             case "BLACK":
-    //                 break;
-    //         }
-    //     });
-    // });
-    //
-    // console.log('----------');
+                case "CORRECT":
+                case "GREEN":
+                case "G":
+                    columnStates = replaceColumnState(
+                        columnStates,
+                        index,
+                        {
+                            correct: currentLetter,
+                            absent: columnStates[index].absent
+                        }
+                    );
+                    knownPresents.add(currentLetter);
+                    break;
 
-    // let absentLetterRegex = new RegExp('^' + knownAbsents.join(''));
-    // console.log(knownAbsents.join(''));
-    // console.log(absentLetterRegex);
-    // console.log('----------');
+                default:
+                case "EMPTY":
+                case "BLACK":
+                case "B":
+                case "K":
+                    break;
+            }
+        });
+    });
 
-    // let presentLetterRegexs = knownPresents.map(letter => new RegExp(letter));
-    // console.log(knownPresents.join(''));
-    // console.log(presentLetterRegexs);
-    // console.log('----------');
+    const columnSpecificStrings = columnStates.map((cs, _) => {
+        if (cs.correct)
+            return cs.correct;
+        return '[^'.concat(cs.absent === '' ? ' ' : cs.absent).concat(']')
+    });
+    const columnSpecificString = '^'.concat(columnSpecificStrings.join('')).concat('$');
+    let columnSpecificRegex = new RegExp(columnSpecificString, 'i');
 
-    let regexs: Array<RegExp> = [];
-    regexs.push(/^S[^RATEWINDYPO][^RATEWNDYPO][^RATEWNDYPOI]L$/);
-    regexs.push(/I/);
-    regexs.push(/S/);
-    regexs.push(/L/);
-    console.log(regexs);
-    return regexs;
+    const presentLetterRegexs: RegExp[] = [];
+    knownPresents.forEach(letter => presentLetterRegexs.push(new RegExp(letter, 'i')));
+
+    return [columnSpecificRegex, ...presentLetterRegexs];
 }
 
-export const findHints = (inputs: string[], wordleRegexs: RegExp[]) =>
+const findHints = (inputs: string[], wordleRegexs: RegExp[]) =>
     inputs.filter(line => wordleRegexs.every(regEx => regEx.test(line)));
 
 const knownRegexs = computeRegexsForHints(knownHints);
 const hints = findHints(answerWords, knownRegexs);
 hints.forEach(item => console.log(item));
+
+export { knownHints, computeRegexsForHints, wordleWords, findHints }

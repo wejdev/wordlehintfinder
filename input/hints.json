@@ -1,7 +1,25 @@
 [
-    [{"ch":"R", "state": "correct"},{"ch":"A", "state": "present"},{"ch":"I", "state": "absent"},{"ch":"S", "state": "absent"},{"ch":"E", "state": "absent"}],
-    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
-    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
+    [
+        {"ch":"I", "state": "absent"},
+        {"ch":"R", "state": "absent"},
+        {"ch":"A", "state": "present"},
+        {"ch":"T", "state": "absent"},
+        {"ch":"E", "state": "absent"}
+    ],
+    [
+        {"ch":"S", "state": "DARKGRAY"},
+        {"ch":"U", "state": "YELLOW"},
+        {"ch":"M", "state": "DARKGRAY"},
+        {"ch":"A", "state": "YELLOW"},
+        {"ch":"C", "state": "YELLOW"}
+    ],
+    [
+        {"ch":"", "state": "empty"},
+        {"ch":"", "state": "empty"},
+        {"ch":"", "state": "empty"},
+        {"ch":"", "state": "empty"},
+        {"ch":"", "state": "empty"}
+    ],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
     [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}]

@@ -21,6 +21,7 @@ pids
 .vs
 .suo
 .vscode
+.idea
 /bin
 /out
 
