@@ -7,7 +7,8 @@ const __rootdirname = __dirname.substring(0, __dirname.lastIndexOf("/"));
 const __inputdirname = __rootdirname + "input/";
 
 const wordleWords = JSON.parse(fs.readFileSync(
-    path.join(__inputdirname, "wordlewords.json"), "utf8"));
+    path.join(__inputdirname, "nytwordlewords.json"), "utf8"));
+
 const answerWords = wordleWords
     .answerWords
     .map((w: string) => w.toUpperCase())
@@ -46,7 +47,7 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
                     columnStates = columnStates.map(cs => {
                         return {
                             correct: cs.correct,
-                            absent: cs.absent.concat(currentLetter)
+                            absent: cs.absent + currentLetter
                         };
                     });
                     break;
@@ -59,7 +60,7 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
                         index,
                         {
                             correct: columnStates[index].correct,
-                            absent: columnStates[index].absent.concat(currentLetter)
+                            absent: columnStates[index].absent + currentLetter
                         }
                     );
                     knownPresents.add(currentLetter);
@@ -79,11 +80,11 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
                     knownPresents.add(currentLetter);
                     break;
 
-                default:
                 case "EMPTY":
                 case "BLACK":
                 case "B":
                 case "K":
+                default:
                     break;
             }
         });
@@ -92,9 +93,10 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
     const columnSpecificStrings = columnStates.map((cs, _) => {
         if (cs.correct)
             return cs.correct;
-        return '[^'.concat(cs.absent === '' ? ' ' : cs.absent).concat(']')
+        else
+            return '[^' + cs.absent === '' ? ' ' : cs.absent + ']';
     });
-    const columnSpecificString = '^'.concat(columnSpecificStrings.join('')).concat('$');
+    const columnSpecificString = '^' + columnSpecificStrings.join('') + '$';
     let columnSpecificRegex = new RegExp(columnSpecificString, 'i');
 
     const presentLetterRegexs: RegExp[] = [];
