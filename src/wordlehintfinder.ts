@@ -94,7 +94,7 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
         if (cs.correct)
             return cs.correct;
         else
-            return '[^' + cs.absent === '' ? ' ' : cs.absent + ']';
+            return '[^' + (cs.absent === '' ? ' ' : cs.absent) + ']';
     });
     const columnSpecificString = '^' + columnSpecificStrings.join('') + '$';
     let columnSpecificRegex = new RegExp(columnSpecificString, 'i');

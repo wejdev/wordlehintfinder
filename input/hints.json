@@ -1,26 +1,37 @@
 [
     [
-        {"ch":"I", "state": "absent"},
-        {"ch":"R", "state": "absent"},
-        {"ch":"A", "state": "present"},
-        {"ch":"T", "state": "absent"},
-        {"ch":"E", "state": "absent"}
+        { "ch": "R", "state": "absent" },
+        { "ch": "O", "state": "absent" },
+        { "ch": "A", "state": "green" },
+        { "ch": "T", "state": "absent" },
+        { "ch": "E", "state": "green" }
     ],
     [
-        {"ch":"S", "state": "DARKGRAY"},
-        {"ch":"U", "state": "YELLOW"},
-        {"ch":"M", "state": "DARKGRAY"},
-        {"ch":"A", "state": "YELLOW"},
-        {"ch":"C", "state": "YELLOW"}
+        { "ch": "S", "state": "g" },
+        { "ch": "H", "state": "g" },
+        { "ch": "A", "state": "g" },
+        { "ch": "P", "state": "darkgray" },
+        { "ch": "E", "state": "green" }
     ],
     [
-        {"ch":"", "state": "empty"},
-        {"ch":"", "state": "empty"},
-        {"ch":"", "state": "empty"},
-        {"ch":"", "state": "empty"},
-        {"ch":"", "state": "empty"}
+        { "ch": "D", "state": "a" },
+        { "ch": "I", "state": "a" },
+        { "ch": "M", "state": "a" },
+        { "ch": "L", "state": "a" },
+        { "ch": "Y", "state": "a" }
     ],
-    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
-    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}],
-    [{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"},{"ch":"", "state": "empty"}]
+    [
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" }
+    ],
+    [
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" },
+        { "ch": "", "state": "empty" }
+    ]
 ]
