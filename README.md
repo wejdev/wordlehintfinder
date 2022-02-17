@@ -1,6 +1,8 @@
+# Wordle Hint Finder
+
 ## Project setup
 
-```
+```text
 
 npm i
 
@@ -8,7 +10,7 @@ npm i
 
 ## Compile to typescript
 
-```
+```text
 
 npm run build
 
@@ -16,7 +18,7 @@ npm run build
 
 ## Run tests
 
-```
+```text
 
 npm test
 
@@ -61,7 +63,7 @@ Save the file and run "npm run hint" to get the updated hints. It's only necessa
 
 ## Get list of hint words
 
-```
+```text
 
 npm run hint
 
