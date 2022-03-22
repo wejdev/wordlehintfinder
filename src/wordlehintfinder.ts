@@ -9,12 +9,27 @@ const __inputdirname = __rootdirname + "input/";
 const wordleWords = JSON.parse(fs.readFileSync(
     path.join(__inputdirname, "nytwordlewords.json"), "utf8"));
 
-const answerWords = wordleWords
+const answerWords: string[] = wordleWords
     .answerWords
     .map((w: string) => w.toUpperCase())
     .sort((n1: string, n2: string) => {
         return (n1 > n2) ? 1 : (n1 < n2) ? -1 : 0;
     });
+
+const acceptedWords: string[] = wordleWords
+    .acceptedWords
+    .map((w: string) => w.toUpperCase())
+    .sort((n1: string, n2: string) => {
+        return (n1 > n2) ? 1 : (n1 < n2) ? -1 : 0;
+    });
+
+const canuckWords: string[] = wordleWords
+    .canuckWords
+    .map((w: string) => w.toUpperCase())
+    .sort((n1: string, n2: string) => {
+        return (n1 > n2) ? 1 : (n1 < n2) ? -1 : 0;
+    });
+
 
 const knownHints = JSON.parse(
     fs.readFileSync(path.join(__inputdirname, "hints.json"), "utf8"));
@@ -24,6 +39,7 @@ const replaceColumnState = (
     index: number,
     items: { correct: string, absent: string }) =>
     [...array.slice(0, index), items, ...array.slice(index + 1)];
+// TODO Can this use splice?
 
 const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp[] => {
     let knownPresents: Set<string> = new Set();
@@ -108,8 +124,22 @@ const computeRegexsForHints = (hints: { ch: string; state: string }[][]): RegExp
 const findHints = (inputs: string[], wordleRegexs: RegExp[]) =>
     inputs.filter(line => wordleRegexs.every(regEx => regEx.test(line)));
 
+console.log("-----------------------------------------------------");
 const knownRegexs = computeRegexsForHints(knownHints);
-const hints = findHints(answerWords, knownRegexs);
-hints.forEach(item => console.log(item));
+knownRegexs.forEach(item => console.log(item));
+
+// console.log("-----------------------------------------------------");
+// const acceptedHints = findHints(acceptedWords, knownRegexs);
+// acceptedHints.forEach(item => console.log(item));
+
+console.log("-----------------------------------------------------\n");
+const canuckHints = findHints(canuckWords, knownRegexs);
+canuckHints.forEach(item => console.log(item));
+
+console.log("-----------------------------------------------------");
+const answerHints = findHints(answerWords, knownRegexs);
+answerHints.forEach(item => console.log(item));
+
+console.log("-----------------------------------------------------\n");
 
 export { knownHints, computeRegexsForHints, wordleWords, findHints }

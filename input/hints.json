@@ -1,24 +1,10 @@
 [
     [
-        { "ch": "I", "state": "absent" },
-        { "ch": "R", "state": "absent" },
-        { "ch": "A", "state": "green" },
-        { "ch": "T", "state": "absent" },
-        { "ch": "E", "state": "green" }
-    ],
-    [
-        { "ch": "P", "state": "a" },
-        { "ch": "U", "state": "a" },
-        { "ch": "N", "state": "a" },
-        { "ch": "T", "state": "darkgray" },
-        { "ch": "S", "state": "yellow" }
-    ],
-    [
-        { "ch": "", "state": "empty" },
-        { "ch": "", "state": "empty" },
-        { "ch": "", "state": "empty" },
-        { "ch": "", "state": "empty" },
-        { "ch": "", "state": "empty" }
+        { "ch": "S", "state": "absent" },
+        { "ch": "L", "state": "green" },
+        { "ch": "O", "state": "absent" },
+        { "ch": "S", "state": "green" },
+        { "ch": "H", "state": "green" }
     ],
     [
         { "ch": "", "state": "empty" },
